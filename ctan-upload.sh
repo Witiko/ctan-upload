@@ -21,7 +21,7 @@ COOKIEJAR=`mktemp`
 trap "rm $COOKIEJAR" EXIT
 TICKET="$(curl -c $COOKIEJAR -s 'https://ctan.org/upload' |
   sed -nr '/<input name="ticket"/s/.*<input name="ticket".*value="([^"]*)".*/\1/p')"
-[ -z "$TICKET" ] && die 10 Failed to download ticked number.
+[ -z "$TICKET" ] && die 10 Failed to download ticket number.
 
 # Send the archive.
 RESPONSE=`mktemp`
