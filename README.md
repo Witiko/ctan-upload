@@ -1,0 +1,1 @@
+This script makes it possible to upload TeX-related packages to the the CTAN archive via the HTTP interface at <https://ctan.org/upload/save> in an automated fashion. You invoke the script as `ctan-upload.sh SCRIPT`, where `SCRIPT` is a shell script that defines information describing your package (inspect the `example.def` file).
