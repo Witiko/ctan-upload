@@ -42,5 +42,5 @@ curl -F ticket="$TICKET" \
      -F 'file=@'"$FILENAME"';type=application/zip' \
      -F SUBMIT='Submit contribution' \
      -b $COOKIEJAR https://ctan.org/upload/save >$RESPONSE
-  grep <$RESPONSE -qF 'Your contribution has been uploaded' ||
+grep <$RESPONSE -qF 'Your contribution has been uploaded' ||
   die 12 Upload failed: "`cat $RESPONSE`"
