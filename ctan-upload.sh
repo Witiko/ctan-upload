@@ -39,7 +39,7 @@ curl -F ticket="$TICKET" \
      -F announcement="$ANNOUNCEMENT" \
      -F note="$NOTE" \
      -F license="$LICENSE" \
-     -F 'file=@'"$FILENAME"';type=application/zip' \
+     -F file=@"$FILENAME" \
      -F SUBMIT='Submit contribution' \
      -b $COOKIEJAR https://ctan.org/upload/save >$RESPONSE
 grep <$RESPONSE -qF 'Your contribution has been uploaded' ||
