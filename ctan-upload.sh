@@ -1,5 +1,5 @@
 #!/bin/sh
-die() { printf '%s\n' "${*:2}"; exit $1; }
+die() { EXITCODE=$1; shift; printf '%s\n' "$*"; exit $EXITCODE; }
 
 # Source the passed file.
 [ -e "$1" ] && . "$1"
