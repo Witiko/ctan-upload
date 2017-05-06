@@ -38,7 +38,13 @@ curl -F ticket="$TICKET" \
      -F type="$TYPE" \
      -F announcement="$ANNOUNCEMENT" \
      -F note="$NOTE" \
-     -F license="$LICENSE" \
+     -F licenses="$LICENSE" \
+     -F home="$HOME" \
+     -F bugs="$BUGS" \
+     -F support="$SUPPORT" \
+     -F announce="$ANNOUNCEMENTS" \
+     -F repository="$REPOSITORY" \
+     -F development="$DEVELOPMENT" \
      -F file=@"$FILENAME" \
      -F SUBMIT='Submit contribution' \
      -b $COOKIEJAR https://ctan.org/upload/save >$RESPONSE
