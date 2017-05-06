@@ -9,7 +9,7 @@ die() { EXITCODE=$1; shift; printf '%s\n' "$*"; exit $EXITCODE; }
 [ -z "$VERS" ] && die 2 Undefined / empty VERS
 [ -z "$AUTHOR" ] && die 3 Undefined / empty AUTHOR
 [ -z "$FILENAME" ] && die 4 Undefined / empty FILENAME
-[ ! -e "$FILENAME" ] && die 5 File FILENAME does not exist
+[ ! -e "$FILENAME" ] && die 5 File "$FILENAME" does not exist
 [ -z "$EMAIL" ] && die 6 Undefined / empty EMAIL
 [ -z "$DESCRIPTION" ] && die 7 Undefined / empty DESCRIPTION
 [ -z "$CTANPATH" ] && die 8 Undefined / empty CTANPATH
