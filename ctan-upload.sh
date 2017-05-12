@@ -28,26 +28,26 @@ TICKET="$(curl -c $COOKIEJAR -s 'https://ctan.org/upload' |
 # Send the archive.
 RESPONSE=`mktemp`
 trap 'rm $COOKIEJAR $RESPONSE' EXIT
-curl -F ticket="$TICKET" \
-     -F pkg="$PKG" \
-     -F vers="$VERS" \
-     -F author="$AUTHOR" \
-     -F uploader="$UPLOADER" \
-     -F email="$EMAIL" \
-     -F description="$DESCRIPTION" \
-     -F ctanPath="$CTANPATH" \
-     -F type="$TYPE" \
-     -F announcement="$ANNOUNCEMENT" \
-     -F note="$NOTE" \
-     -F licenses="$LICENSE" \
-     -F home="$HOME" \
-     -F bugs="$BUGS" \
-     -F support="$SUPPORT" \
-     -F announce="$ANNOUNCEMENTS" \
-     -F repository="$REPOSITORY" \
-     -F development="$DEVELOPMENT" \
-     -F file=@"$FILENAME" \
-     -F SUBMIT='Submit contribution' \
+curl --form-string ticket="$TICKET" \
+     --form-string pkg="$PKG" \
+     --form-string vers="$VERS" \
+     --form-string author="$AUTHOR" \
+     --form-string uploader="$UPLOADER" \
+     --form-string email="$EMAIL" \
+     --form-string description="$DESCRIPTION" \
+     --form-string ctanPath="$CTANPATH" \
+     --form-string type="$TYPE" \
+     --form-string announcement="$ANNOUNCEMENT" \
+     --form-string note="$NOTE" \
+     --form-string licenses="$LICENSE" \
+     --form-string home="$HOME" \
+     --form-string bugs="$BUGS" \
+     --form-string support="$SUPPORT" \
+     --form-string announce="$ANNOUNCEMENTS" \
+     --form-string repository="$REPOSITORY" \
+     --form-string development="$DEVELOPMENT" \
+     --form-string file=@"$FILENAME" \
+     --form-string SUBMIT='Submit contribution' \
      -b $COOKIEJAR https://ctan.org/upload/save >$RESPONSE
 grep <$RESPONSE -qF 'Your contribution has been uploaded' ||
   die 12 Upload failed: "`cat $RESPONSE`"
