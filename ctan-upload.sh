@@ -21,8 +21,9 @@ die() { EXITCODE=$1; shift; printf '%s\n' "$*"; exit $EXITCODE; }
 COOKIEJAR=`mktemp`
 trap 'rm $COOKIEJAR' EXIT
 TICKET="$(curl -c $COOKIEJAR -s 'https://ctan.org/upload' |
-  sed -nr '/<input name="ticket"/s/.*<input name="ticket".*value="([^"]*)".*/\1/p')"
-[ -z "$TICKET" ] && die 11 Failed to download ticket number.
+  xmllint --html --xpath "//input[@name='ticket']/@value" - 2>/dev/null |
+	sed -n -r '/^ value=".*"$/s/^ value="(.*)"$/\1\n/p')"
+[ -z "$TICKET" ] && die 11 Failed to download ticket number
 
 # Send the archive.
 RESPONSE=`mktemp`
