@@ -46,7 +46,7 @@ curl --form-string ticket="$TICKET" \
      --form-string announce="$ANNOUNCEMENTS" \
      --form-string repository="$REPOSITORY" \
      --form-string development="$DEVELOPMENT" \
-     --form-string file=@"$FILENAME" \
+     -F file=@"$FILENAME" \
      --form-string SUBMIT='Submit contribution' \
      -b $COOKIEJAR https://ctan.org/upload/save >$RESPONSE
 grep <$RESPONSE -qF 'Your contribution has been uploaded' ||
